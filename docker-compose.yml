@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+
+  influxdb:
+    image: influxdb:1.8.5
+    ports:
+      - '8086:8086'
+    environment: 
+      - INFLUXDB_DB=db1
+      - INFLUXDB_USER=user
+      - INFLUXDB_PASSWORD=password
+  grafana:
+    image: grafana/grafana:7.5.5
+    ports:
+      - '3000:3000'
+    depends_on:
+      - influxdb
+    volumes:
+      - ./grafana/:/etc/grafana/provisioning
