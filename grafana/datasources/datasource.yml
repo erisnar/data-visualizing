@@ -7,4 +7,4 @@ datasources:
     database: db1
     user: user
     password: password
-    url: http://influx:8086
+    url: http://influxdb:8086

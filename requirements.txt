@@ -1,0 +1,2 @@
+pycountry==20.7.3
+influxdb==5.3.1

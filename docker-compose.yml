@@ -1,7 +1,6 @@
 version: '3.8'
 
 services:
-
   influxdb:
     image: influxdb:1.8.5
     ports:
@@ -10,6 +9,7 @@ services:
       - INFLUXDB_DB=db1
       - INFLUXDB_USER=user
       - INFLUXDB_PASSWORD=password
+
   grafana:
     image: grafana/grafana:7.5.5
     ports:
@@ -20,4 +20,9 @@ services:
       - ./grafana/:/etc/grafana/provisioning
     environment: 
       - GF_INSTALL_PLUGINS=grafana-worldmap-panel
-    
+  
+  app:
+    image: generate-traffic
+    depends_on: 
+      - influxdb
+      - grafana

@@ -9,6 +9,9 @@ import random
 # Import InfluxDBClient to operate the Influx database
 from influxdb import InfluxDBClient
 
+# Sleep
+import time
+
 # Get random country
 def getRandomCountryCode():
     n = random.randint(0,len(pycountry.countries))
@@ -31,10 +34,16 @@ def generateJSON():
     return json_body
 
 def main():
-    # Initialize DB connection
-    client = InfluxDBClient('localhost', 8086, "user", "password", "globalmap2")
 
-    client.write_points(generateJSON)
+    # Wait for DB
+    time.sleep(10)
+
+    # Initialize DB connection
+    client = InfluxDBClient('influxdb', 8086, "user", "password", "db1")
+
+    while True:
+        client.write_points(generateJSON())
+        time.sleep(5)
 
 # Control execution of code
 if __name__ == "__main__":
