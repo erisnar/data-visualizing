@@ -36,3 +36,11 @@ time                country_code value
 ## Python Application
 
 The Python application generates random country codes and inserts JSON objects as Data Tables in the InfluxDB. The goal is to simulate incoming traffic to a website.
+
+## Cleanup
+
+To destroy the stack run:
+
+```bash
+make destroy
+```
