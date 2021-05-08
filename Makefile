@@ -1,7 +1,7 @@
 all: build deploy
 
 build:
-	docker build -t generate-traffic .
+	docker build -t generate-traffic python/
 
 deploy:
 	docker-compose up -d

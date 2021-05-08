@@ -1,10 +1,12 @@
-# data-visualizing
+# Data Visualizing
+
+In this project we visualize data from an InfluxDB in a Grafana dashboard.
+
+To build and deploy the stack run:
 
 ```bash
-docker-compose up -d
+make all
 ```
-
-Example data generated from National Oceanic and Atmospheric Administration’s (NOAA) Center for Operational Oceanographic Products and Services. See [influxdata](https://docs.influxdata.com/influxdb/v1.8/query_language/sample-data) documentation.
 
 Go to ```http://localhost:3000``` to view example Grafana dashboard.
 
@@ -13,16 +15,16 @@ Go to ```http://localhost:3000``` to view example Grafana dashboard.
 ```SQL
 > create database globalmap
 > use globalmap
-> INSERT test_country,country_code=US value=1
-> SELECT * FROM "test_country"
-name: test_country
+> INSERT countries,country_code=US value=1
+> SELECT * FROM "countries"
+name: countries
 time                country_code value
 ----                ------------ -----
 1620484211870645277 US           1
-> SELECT * FROM "test_country"^C
-> INSERT test_country,country_code=NO value=1
-> SELECT * FROM "test_country"
-name: test_country
+> SELECT * FROM "countries"^C
+> INSERT countries,country_code=NO value=1
+> SELECT * FROM "countries"
+name: countries
 time                country_code value
 ----                ------------ -----
 1620484211870645277 US           1
@@ -30,3 +32,7 @@ time                country_code value
 ```
 
 ![country_codes](images/country_codes.png)
+
+## Python Application
+
+The Python application generates random country codes and inserts JSON objects as Data Tables in the InfluxDB. The goal is to simulate incoming traffic to a website.
