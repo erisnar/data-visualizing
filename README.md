@@ -10,32 +10,21 @@ make all
 
 Go to ```http://localhost:3000``` to view example Grafana dashboard.
 
-## InfluxDB
+## Docker Compose
 
-```SQL
-> create database globalmap
-> use globalmap
-> INSERT countries,country_code=US value=1
-> SELECT * FROM "countries"
-name: countries
-time                country_code value
-----                ------------ -----
-1620484211870645277 US           1
-> SELECT * FROM "countries"^C
-> INSERT countries,country_code=NO value=1
-> SELECT * FROM "countries"
-name: countries
-time                country_code value
-----                ------------ -----
-1620484211870645277 US           1
-1620484410599741637 NO           1
-```
+Docker Compose is used to manage three containers. The stack consists of:
 
-![country_codes](images/country_codes.png)
+- Python app
+- InfluxDB
+- Grafana
+
+The Python application generates data which is stored in the InfluxDB. Grafana is used to visualize the data from InfluxDB.
 
 ## Python Application
 
-The Python application generates random country codes and inserts JSON objects as Data Tables in the InfluxDB. The goal is to simulate incoming traffic to a website.
+The Python application generates a random country code every 5 second and inserts a JSON object as a Data Table in the InfluxDB. The goal is to simulate incoming traffic to a website.
+
+![country_codes](images/country_codes.png)
 
 ## Cleanup
 
