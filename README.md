@@ -22,7 +22,7 @@ The Python application generates data which is stored in the InfluxDB. Grafana i
 
 ## Python Application
 
-The Python application generates a random country code every 5 second and inserts a JSON object as a Data Table in the InfluxDB. The goal is to simulate incoming traffic to a website.
+The Python application generates a random country code every 5 second and inserts a JSON object in the InfluxDB. The goal is to simulate incoming traffic to a website.
 
 ![country_codes](images/country_codes.png)
 
